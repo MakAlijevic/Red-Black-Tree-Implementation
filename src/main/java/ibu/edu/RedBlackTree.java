@@ -4,6 +4,7 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
 
     private Node<Key, Value> root;
     private int steps = 1;
+    private int redLinkCounter = 0;
     private static final boolean RED = true;
     private static final boolean BLACK = false;
 
@@ -109,5 +110,23 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
 
     private void addSteps(){
         steps++;
+    }
+
+    public int countRedLinks(){
+        return countRedLinks(root);
+    }
+
+    private int countRedLinks(Node x){
+        redLinkCounter = 0;
+        if (x == null) {
+            return 0;
+        }
+        redLinkCounter += countRedLinks(x.left);
+        redLinkCounter += countRedLinks(x.right);
+
+        if(x.color==true){
+            redLinkCounter++;
+        }
+        return redLinkCounter;
     }
 }

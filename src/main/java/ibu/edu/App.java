@@ -49,5 +49,6 @@ public class App {
             System.out.println("The student with the given ID does not exist.\n");
             System.out.println("The search was completed in " + rbt.getSteps() + " steps.");
         }
+        System.out.println("Total number of red links in a tree : " + rbt.countRedLinks());
     }
 }
